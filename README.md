@@ -2,6 +2,10 @@
 
 Este proyecto se centra en el análisis de conexiones neuronales mediante la aplicación de métodos de correlación cruzada. A continuación, se presentan los puntos más destacados relacionados con la metodología utilizada.
 
+## Requisitos
+
+El código está escrito en **C#**, por lo que es necesario instalar **.NET** y sus dependencias para poder ejecutarlo. Asegúrate de tener la versión adecuada de .NET instalada en tu sistema.
+
 ## Método de Correlación
 
 El trabajo se basa en la **correlación cruzada normalizada (NCC)**, que cuantifica las interacciones entre pares de neuronas. Se reconocen dos algoritmos:
