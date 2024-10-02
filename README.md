@@ -1,42 +1,33 @@
-# Metodología de Análisis de Actividad Neuronal
+# Proyecto de Análisis de Conexiones Neuronales
 
-## Introducción
-En esta investigación, analizamos la actividad neuronal a partir de datos electrofisiológicos. El conjunto de datos consiste en tres horas de registros electrofisiológicos, en los cuales calculamos correlaciones para entender mejor las interacciones neuronales.
+Este proyecto se centra en el análisis de conexiones neuronales mediante la aplicación de métodos de correlación cruzada. A continuación, se presentan los puntos más destacados relacionados con la metodología utilizada.
 
-## Segmentación de Datos
-Para minimizar los efectos negativos causados por la no estacionariedad de las series temporales, dividimos los datos en segmentos de 250 segundos. Dentro de cada segmento, se calculan los coeficientes de variación cada 10 segundos, promediándose luego para obtener un único valor representativo.
+## Método de Correlación
 
-## Cálculo de Correlaciones
-### Desafíos
-El cálculo de todas las correlaciones cruzadas es una de las tareas más intensivas en este trabajo, debido a la gran cantidad de correlaciones a calcular y la necesidad de generar simultáneamente datos surrogados para aplicar un umbral que elimine correlaciones espúreas.
+El trabajo se basa en la **correlación cruzada normalizada (NCC)**, que cuantifica las interacciones entre pares de neuronas. Se reconocen dos algoritmos:
 
-### Herramienta Utilizada
-Para abordar estos desafíos, utilizamos el software **Spicodyn**, diseñado para ofrecer alta eficiencia computacional en el cálculo de correlaciones y la generación de datos surrogados. Sin embargo, Spicodyn presenta limitaciones al estar diseñado principalmente para experimentos *in vitro*, lo que requiere una adaptación para datos obtenidos en experimentos *in vivo*.
+1. **Correlación Cruzada Normalizada (NCC)**:
+   - Cuantifica la actividad de un neurón objetivo en relación con un neurón de referencia.
+   - La fórmula es:
 
-## Proceso de Construcción de Matrices de Conectividad
-El proceso para construir matrices de conectividad funcional implica varias etapas:
+   $C_{xy}(\tau) = \frac{1}{\sqrt{N_x N_y}} \sum_{s=1}^{N_x} x(t) y(t - \tau)$
 
-1. **Cálculo del Coeficiente de Variación (CV)**: Se calculan los CV en intervalos de 10 segundos, organizándose y agrupándose en conjuntos de CVs adyacentes.
-2. **Extracción de Datos**: Para cada serie de 250 segundos, se extraen los datos por neurón, permitiendo el cálculo de todas las correlaciones entre pares de neuronas.
-3. **Definición de Parámetros**: Se definen variables locales necesarias antes de iniciar el cálculo, como la ventana de correlación, el número de datos surrogados, y la frecuencia de muestreo.
+   - Este método es eficaz para detectar conexiones excitatorias, pero tiene limitaciones en la detección de conexiones inhibitorias.
 
-### Importancia de la Clasificación por Disparos
-La clasificación por disparos es crucial para garantizar que los datos obtenidos se puedan identificar con neuronas individuales, lo cual es fundamental para el análisis.
+2. **Filtrado de Correlación Cruzada Normalizada (FNCCH)**:
+   - Se introduce un segundo algoritmo para detectar conexiones inhibitorias.
+   - La fórmula es:
+
+   $FNCCH = \arg \max_{t} \left| C_{xy}(t) - \frac{1}{W} \sum_{v=-W/2}^{W/2} C_{xy}(v) \right|$
+
+   - Este algoritmo permite distinguir entre conexiones excitatorias e inhibitorias al considerar la media de la NCC y detectar los valores positivos y negativos de disparo.
 
 ## Resultados
-- **Matrices de Conectividad Funcional**: Se construyeron matrices de conectividad funcional a partir de las correlaciones cruzadas calculadas. Estas matrices permiten visualizar las interacciones neuronales significativas.
-- **Visualizaciones**: Se presentan gráficos que muestran los coeficientes de variación y las matrices de conectividad, facilitando la interpretación de los resultados.
 
-## Conclusión
-Este proceso metodológico permite un análisis detallado de la actividad neuronal, proporcionando insights sobre la conectividad funcional entre neuronas. En futuras investigaciones, se continuarán explorando métricas de red para profundizar en la comprensión de las dinámicas neuronales.
-
-## Referencias
-- Spicodyn: Herramienta utilizada para el cálculo de correlaciones y generación de datos surrogados.
-- Neuroimaging Tools and Resources Collaboratory (NITRC): Entidad que respalda el desarrollo de herramientas en neurociencia.
+Los resultados de este análisis permitirán una comprensión más profunda de las interacciones neuronales, especialmente en términos de cómo los diferentes tipos de conexiones influyen en la actividad neuronal. Se presentan ejemplos visuales de cómo se detectan las conexiones excitatorias e inhibitorias en los correlogramas cruzados.
 
 ---
 
-**Fuente**: Elaborada por el autor (2023)
-
+Este resumen proporciona una visión clara de los métodos utilizados en el proyecto. Puedes ajustarlo según sea necesario para que se adapte mejor a tu estilo y al contenido del resto del documento.
 
 
