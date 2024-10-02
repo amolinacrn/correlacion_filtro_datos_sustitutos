@@ -1,4 +1,4 @@
-# Proyecto de Análisis de Conexiones Neuronales
+# Cálculo de Correlaciones Cruzadas a Gran Escala, Evaluación de la Significancia de las Correlaciones y Generación de Datos Sustitutos
 
 Este proyecto se centra en el análisis de conexiones neuronales mediante la aplicación de métodos de correlación cruzada. A continuación, se presentan los puntos más destacados relacionados con la metodología utilizada.
 
