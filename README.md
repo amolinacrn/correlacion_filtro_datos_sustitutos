@@ -22,6 +22,10 @@ El trabajo se basa en la **correlación cruzada normalizada (NCC)**, que cuantif
 
    - Este algoritmo permite distinguir entre conexiones excitatorias e inhibitorias al considerar la media de la NCC y detectar los valores positivos y negativos de disparo.
 
+## Generación de Datos Sustitutos
+
+Además, este código puede generar **datos sustitutos** para evaluar la importancia o significancia de las correlaciones encontradas. El método utilizado para esta generación es el de **shuffling**, que implica reorganizar los datos de forma aleatoria para crear un conjunto de datos que preserve la distribución original pero rompa las correlaciones entre las variables. Esto permite comparar las correlaciones observadas con las que se esperarían por azar.
+
 ## Resultados
 
 Los resultados de este análisis permitirán una comprensión más profunda de las interacciones neuronales, especialmente en términos de cómo los diferentes tipos de conexiones influyen en la actividad neuronal. Se presentan ejemplos visuales de cómo se detectan las conexiones excitatorias e inhibitorias en los correlogramas cruzados.
@@ -29,5 +33,3 @@ Los resultados de este análisis permitirán una comprensión más profunda de l
 ---
 
 Este resumen proporciona una visión clara de los métodos utilizados en el proyecto. Puedes ajustarlo según sea necesario para que se adapte mejor a tu estilo y al contenido del resto del documento.
-
-
